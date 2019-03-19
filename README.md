@@ -1,4 +1,4 @@
-# luckymoney
+# integral
 
 ## Project setup
 ```
