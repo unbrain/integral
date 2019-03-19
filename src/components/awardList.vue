@@ -158,7 +158,7 @@ export default {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-.fullbarinner{
+.fullbarinner {
   border-radius: 6px;
 }
 .bar {
@@ -171,6 +171,9 @@ export default {
 .button {
   width: 65px;
   height: 28px;
+}
+.button::after {
+  border-color: #ff8200;
 }
 .greybutton {
   color: #999 !important;

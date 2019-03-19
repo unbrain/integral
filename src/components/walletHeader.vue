@@ -1,15 +1,20 @@
 <template>
   <div :class="$style.headerwrap">
+    <withdraw-toast :is-show="isShow" @change="isShow = false"></withdraw-toast>
     <div :class="$style.topwrap">
       <div :class="$style.top">
         <div
           w-12-16
           :class="$style.headertop"
         >我的积分</div>
-        <div w-40-52>2560</div>
+        <div
+          w-40-52
+          v-text="currentItegral"
+        ></div>
         <button
           w-12-16
           :class="$style.withdrawbtn"
+          @click="changeMoney"
         >换钱</button>
       </div>
       <div :class="$style.top">
@@ -17,7 +22,7 @@
           w-12-16
           :class="$style.headertop"
         >当前收益</div>
-        <div w-40-52><span :class="$style.moneyicon">￥</span>19.8</div>
+        <div w-40-52><span :class="$style.moneyicon">￥</span>{{currentGet}}</div>
         <button
           w-12-16
           :class="$style.withdrawbtn"
@@ -35,8 +40,24 @@
 </template>
 
 <script>
-export default {
+import withdrawToast from '@/components/withdrawToast';
 
+export default {
+  components: {
+    'withdraw-toast': withdrawToast
+  },
+  data() {
+    return {
+      currentItegral: 2560,
+      currentGet: 18.9,
+      isShow: false
+    }
+  },
+  methods: {
+    changeMoney() {
+      this.isShow = !this.isShow
+    }
+  }
 }
 </script>
 
@@ -50,6 +71,20 @@ export default {
 .topwrap {
   @mixin flexbox;
   justify-content: space-around;
+  & .top:nth-child(1) {
+    position: relative;
+  }
+  & .top:nth-child(1)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 64px;
+    background-color: #fff;
+    right: -53px;
+    top: 40px;
+    transform: scale(0.5);
+  }
 }
 .headertop {
   padding-top: 18px;
@@ -65,9 +100,9 @@ export default {
 .footerwrap {
   padding: 11px 0;
   background-image: linear-gradient(
-    -174deg,
-    rgba(255, 111, 0, 0.3) 0%,
-    rgba(255, 130, 0, 0.1) 100%
+    90deg,
+    rgba(255, 158, 34, 1) 0%,
+    rgba(255, 201, 54, 0.3) 100%
   );
 }
 .moneyicon {

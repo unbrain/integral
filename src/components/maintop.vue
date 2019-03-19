@@ -11,10 +11,10 @@
       >
       积分
     </div>
-    <div w-40-52>
+    <div w-30-44>
       2500
     </div>
-    <button :class="[$style.mybutton,$style.mainbtn]">
+    <button :class="[$style.mybutton,$style.mainbtn]" @click="go">
       兑换
     </button>
   </div>
@@ -22,7 +22,11 @@
 
 <script>
 export default {
-
+  methods:{
+    go(){
+      this.$router.push('/wallet');
+    }
+  }
 }
 </script>
 
@@ -33,7 +37,7 @@ export default {
   @mixin flexbox;
   flex-direction: column;
   width: 100%;
-  height: 120px;
+  height: 135px;
   color: #fff;
 }
 .top {
@@ -45,6 +49,11 @@ export default {
   height: 16px;
 }
 .mainbtn {
-  padding: 5px 25px;
+  display: block;
+  @mixin flexbox;
+  width: 60px;
+  height: 25px;
+  font-size: 12px;
+  line-height: 20px;
 }
 </style>

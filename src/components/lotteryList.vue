@@ -1,5 +1,10 @@
 <template>
   <div>
+    <check-in
+      v-show="show"
+      :integral="currentIntegral"
+      @close="show = false"
+    ></check-in>
     <ul :class="$style.wrap">
       <li
         v-for="(item, index) in lotteryDetails"
@@ -7,10 +12,19 @@
         :class="$style.liwrap"
       >
         <div
-          :class="$style.circle"
+          :class="[$style.circle,{[$style.grey]: item.status === 0,[$style.pink]: item.status=== 2}]"
           w-11-11
+          @click="showCheck(index)"
         >
-          <div v-html="item.value"></div>
+          <div
+            v-html="item.value"
+            v-if="item.value"
+          ></div>
+          <div v-else>
+            <img
+              src="../assets/pan_03.png"
+              alt=""
+            ></div>
         </div>
         <div
           v-text="item.date"
@@ -23,40 +37,65 @@
 </template>
 
 <script>
+import checkIn from '../components/checkIn';
 export default {
+  components: {
+    'check-in': checkIn,
+  },
   data() {
     return {
+      show: false,
+      currentIntegral: '',
       lotteryDetails: [
         {
           value: '已领<div>+20</div>',
-          date: '8月23日'
+          date: '8月23日',
+          status: 1
+        },
+        {
+          value: '+20',
+          date: '8月24日',
+          status: 0
         },
         {
           value: '已领<div>+20</div>',
-          date: '8月23日'
+          date: '8月25日',
+          status: 1
         },
         {
-          value: '已领<div>+20</div>',
-          date: '8月23日'
+          value: '+20',
+          date: '8月26日',
+          status: 2
         },
         {
-          value: '已领<div>+20</div>',
-          date: '8月23日'
+          value: '+50',
+          date: '8月27日',
+          status: 2
         },
         {
-          value: '已领<div>+20</div>',
-          date: '8月23日'
+          value: '+20',
+          date: '8月28日',
+          status: 2
         },
         {
-          value: '已领<div>+20</div>',
-          date: '8月23日'
-        },
-        {
-          value: '已领<div>+20</div>',
-          date: '8月23日'
+          value: '',
+          date: '8月29日',
+          status: 1
         },
       ]
     }
+  },
+  methods: {
+    showCheck(index) {
+      if (this.lotteryDetails[index].status === 2) {
+        this.currentIntegral = this.lotteryDetails[index].value;
+        this.show = true;
+        this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
+        this.lotteryDetails[index].status = 1;
+      }else if(this.lotteryDetails[index].value === ''){
+        console.log('fine')
+      }
+    },
   }
 }
 </script>
@@ -82,6 +121,16 @@ export default {
   background-image: linear-gradient(-132deg, #fbe438 0%, #ff9925 100%);
   color: #fff;
 }
+.grey {
+  background-image: none;
+  background-color: #f5f5f5;
+  color: #dedede;
+}
+.pink {
+  background-image: none;
+  background-color: #fff8e6;
+  color: #ff8200;
+}
 .footer {
   position: relative;
   color: #999;
@@ -89,13 +138,17 @@ export default {
   height: 14px;
   padding: 15px 0 13px 27px;
 }
-/* .footer {
-  position: relative;
-  padding: 15px 0 13px 27px;
-  color: #999;
-  font-size: 10px;
-  line-height: 14px;
-} */
+.footer::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #f4cca4;
+  border-radius: 100%;
+  left: 20px;
+  top: 50%;
+}
 .footer::after {
   position: absolute;
   display: block;
@@ -105,5 +158,9 @@ export default {
   line-height: 28px;
   transform: scale(0.5);
   transform-origin: 0 0;
+}
+img {
+  width: 40px;
+  height: 40px;
 }
 </style>

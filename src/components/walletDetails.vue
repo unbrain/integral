@@ -18,7 +18,7 @@
         <div :class="$style.question">对此有疑问</div>
       </div>
     </div>
-    <ul>
+    <ul :class="$style.listwrap">
       <li
         :class="$style.list"
         v-for="(item, index) in listDetails"
@@ -80,7 +80,55 @@ export default {
           time: '2018-01-20 14:12:33',
           change: '+3000积分',
           status: '审核未通过'
-        }
+        },
+                {
+          action: '签到奖励',
+          time: '2018-01-20 14:12:33',
+          change: '200积分',
+          status: '审核通过'
+        },
+        {
+          action: '任务奖励',
+          time: '2018-01-20 14:12:33',
+          change: '+3000积分',
+          status: '审核未通过'
+        },
+                {
+          action: '签到奖励',
+          time: '2018-01-20 14:12:33',
+          change: '200积分',
+          status: '审核通过'
+        },
+        {
+          action: '任务奖励',
+          time: '2018-01-20 14:12:33',
+          change: '+3000积分',
+          status: '审核未通过'
+        },
+                {
+          action: '签到奖励',
+          time: '2018-01-20 14:12:33',
+          change: '200积分',
+          status: '审核通过'
+        },
+        {
+          action: '任务奖励',
+          time: '2018-01-20 14:12:33',
+          change: '+3000积分',
+          status: '审核未通过'
+        },        {
+          action: '签到奖励',
+          time: '2018-01-20 14:12:33',
+          change: '200积分',
+          status: '审核通过'
+        },
+        {
+          action: '任务奖励',
+          time: '2018-01-20 14:12:33',
+          change: '+3000积分',
+          status: '审核未通过'
+        },
+
       ]
     }
   }
@@ -111,6 +159,9 @@ export default {
     align-items: center;
   }
 }
+.listwrap{
+  padding-bottom: 90px;
+}
 .list {
   @mixin flexbox;
   justify-content: space-between;
@@ -126,7 +177,7 @@ export default {
   padding-bottom: 2px;
 }
 .isdraw {
-  color: #1aba33;
+  color: #e3e3e3;
 }
 
 .icon {
