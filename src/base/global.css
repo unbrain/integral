@@ -1,0 +1,197 @@
+@import './mixins.css';
+
+@svg 1px-border {
+  height: 4px;
+  width: 4px;
+
+  @rect {
+    @mixin fullsize;
+    fill: var(--color, black);
+    stroke-width: 25%;
+  }
+}
+
+@svg square {
+  height: 1px;
+
+  @rect {
+    @mixin fullsize;
+    fill: var(--color, black);
+  }
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  padding: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+ul,
+li {
+  margin: 0;
+  padding-inline-start: 0px;
+  list-style: none;
+}
+
+[w-10-14] {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.w1014::after {
+  display: block;
+  font-size: 20px;
+  line-height: 28px;
+  transform: scale(0.5);
+}
+
+[w-11-11] {
+  font-size: 11px;
+  line-height: 11px;
+}
+
+[w-11-15] {
+  font-size: 11px;
+  line-height: 15px;
+}
+
+[w-12-17] {
+  font-size: 12px;
+  line-height: 17px;
+}
+
+[w-14-20] {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+[w-16-19] {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+[w-16-22] {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+[w-18-20] {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+[w-21-29] {
+  font-size: 21px;
+  line-height: 29px;
+}
+
+[w-28-40] {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+[w-40-52] {
+  font-size: 40px;
+  line-height: 52px;
+}
+
+[c-333] {
+  color: #333;
+}
+
+[c-999] {
+  color: #999;
+}
+
+[c-org] {
+  color: #FFA14E;
+}
+
+[c-b8b8b8] {
+  color: #b8b8b8;
+}
+
+.mybutton {
+  position: relative;
+  border-radius: 50px;
+  border-style: none;
+  color: #fff;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+@media only screen and (-webkit-device-pixel-ratio: 1) {
+  .mybutton::after {
+    @mixin fullsize;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+    border: 1px solid #FFA14E;
+    border-radius: 50px;
+  }
+}
+
+@media only screen and (-webkit-device-pixel-ratio: 2) {
+  .mybutton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+    width: 200%;
+    height: 200%;
+    border: 2px solid #FFA14E;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    border-radius: 50px;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .mybutton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+    width: 300%;
+    height: 300%;
+    border: 2px solid #FFA14E;
+    transform: scale(0.3333);
+    transform-origin: 0 0;
+    border-radius: 50px;
+  }
+}
+
+button:active {
+  transform: scale(1.05);
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

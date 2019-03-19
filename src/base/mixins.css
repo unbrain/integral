@@ -1,0 +1,17 @@
+@define-mixin bg $url {
+    background-image: url($(url));
+    background-size: cover;
+}
+
+@custom-media --small-viewport (max-width: 320px);
+
+@define-mixin flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@define-mixin fullsize {
+    height: 100%;
+    width: 100%;
+}
