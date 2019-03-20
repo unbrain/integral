@@ -45,25 +45,33 @@ input:focus {
   outline: none;
 }
 
-input:-moz-placeholder {/* Mozilla Firefox 4 to 18*/
-  color: #e8e8e8;
-}
-input::-moz-placeholder {/* Mozilla Firefox 19+*/
-  color: #e8e8e8;
-}
-
-input:-ms-input-placeholder{
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18*/
   color: #e8e8e8;
 }
 
-input::-webkit-input-placeholder{
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+*/
   color: #e8e8e8;
 }
+
+input:-ms-input-placeholder {
+  color: #e8e8e8;
+}
+
+input::-webkit-input-placeholder {
+  color: #e8e8e8;
+}
+
 ul,
 li {
   margin: 0;
   padding-inline-start: 0px;
   list-style: none;
+}
+
+ol {
+  padding-inline-start: 0px;
 }
 
 [w-10-14] {
@@ -122,6 +130,7 @@ li {
   font-size: 18px;
   line-height: 20px;
 }
+
 [w-18-25] {
   font-size: 18px;
   line-height: 25px;
@@ -170,9 +179,11 @@ li {
 [c-fff] {
   color: #fff;
 }
-.date{
+
+.date {
   position: relative;
 }
+
 .mybutton {
   position: relative;
   border-radius: 50px;

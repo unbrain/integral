@@ -8,11 +8,13 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
+    "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
     "postcss": "^7.0.14",
     "postcss-aspect-ratio-mini": "^1.0.1",
@@ -29,9 +31,11 @@
     "postcss-url": "^8.0.0",
     "postcss-viewport-units": "^0.1.6",
     "postcss-write-svg": "jonathantneal/postcss-write-svg",
+    "sass-loader": "^7.1.0",
     "style-resources-loader": "^1.2.1",
     "svg-inline-loader": "^0.8.0",
     "vue": "^2.6.6",
+    "vue-clipboard2": "^0.3.0",
     "vue-router": "^3.0.2",
     "vue-style-loader": "^4.1.2",
     "vue-svg-loader": "^0.12.0"
@@ -62,7 +66,7 @@
   "postcss": {
     "plugins": {
       "postcss-import": {},
-      "postcss-url": {},
+
       "postcss-mixins": {},
       "postcss-write-svg": {},
       "postcss-cssnext": {},

@@ -1,10 +1,16 @@
 <template>
   <div :class="$style.wrap">
-    <div :class="$style.fwrap" w-12-16>
-      <div :class="$style.left">
+    <div
+      :class="$style.fwrap"
+      w-12-16
+    >
+      <div
+        :class="$style.left"
+        @click="gomain"
+      >
         新玩法来袭
       </div>
-      <div>
+      <div :class="$style.right">
         规则
       </div>
     </div>
@@ -36,6 +42,9 @@ export default {
   methods: {
     go() {
       this.$router.push('/wallet');
+    },
+    gomain() {
+      this.$router.push('/main');
     }
   }
 }
@@ -44,7 +53,7 @@ export default {
 <style lang="postcss" module>
 @import "../base/global.css";
 .wrap {
-  @mixin bg ../assets/bg.png;
+  @mixin bg "@/assets/bg1.png";
   @mixin flexbox;
   position: relative;
   flex-direction: column;
@@ -58,7 +67,6 @@ export default {
   top: 8px;
   justify-content: space-between;
   width: 100vw;
-  padding-right: 10px;
 }
 .left {
   left: 1px;
@@ -67,6 +75,9 @@ export default {
   border-bottom-right-radius: 32px;
   border-top-right-radius: 32px;
   font-weight: 600;
+}
+.right {
+  padding-right: 10px;
 }
 .top {
   display: flex;

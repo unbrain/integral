@@ -115,7 +115,7 @@ export default {
   width: 249px;
 }
 .turntable {
-  @mixin bg ../assets/pan0.png;
+  @mixin bg "@/assets/pan0.png";
   @mixin flexbox;
   position: relative;
   height: 314px;

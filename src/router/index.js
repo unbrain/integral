@@ -2,7 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import wallet from '@/views/wallet';
 import withdraw from '@/views/withdraw';
-import main from '@/views/main';
+import best from '@/views/best';
+import main from '@/views/main.vue';
+import awardRecord from '@/views/awardRecord.vue';
 
 Vue.use(Router);
 
@@ -20,8 +22,19 @@ export default new Router({
     },
     {
       path: '/',
-      name: main,
-      component: main
-    }
+      name: best,
+      component: best
+    },
+    {
+      path: '/main',
+      name: 'main',
+      component: main,
+    },
+    {
+      path: '/record',
+      name: 'record',
+      component: awardRecord,
+      props: true
+    },
   ]
 });
