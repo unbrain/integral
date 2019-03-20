@@ -2,7 +2,7 @@
   <div :class="$style.wrap">
     <div
       w-16-19
-      title="$style.top"
+      :class="$style.top"
     >
       <img
         src="@/assets/Group 17.png"
@@ -43,6 +43,9 @@ export default {
 .top {
   display: flex;
   align-items: center;
+  & img{
+    margin-right: 4px;
+  }
 }
 .star {
   width: 16px;

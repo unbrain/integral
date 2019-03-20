@@ -61,9 +61,8 @@
           >去完成</button>
           <button
             :class="$style.getbutton"
-            w-11-15
             v-else
-          >领取20积分</button>
+          ></button>
         </div>
       </li>
     </ul>
@@ -182,11 +181,20 @@ export default {
   border-color: #dadada;
 }
 .getbutton {
+  position: relative;
   width: 65px;
   height: 28px;
   border-radius: 28px;
   background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
   color: #fff;
+}
+.getbutton::after{
+  display: block;
+  font-size: 22px;
+  white-space: nowrap;
+  transform: scale(0.5);
+  content: "领取20积分";
+  transform-origin: 4px;
 }
 .down {
   width: 21px;

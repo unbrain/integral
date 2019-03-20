@@ -59,7 +59,13 @@ export default {
   },
   watch: {
     turnsNum(newValue) {
-      if (newValue === 10) {
+      if (newValue === 5) {
+        clearInterval(this.timer);
+        this.timer = this.goDetails(10)
+      } else if (newValue === 6) {
+        clearInterval(this.timer);
+        this.timer = this.goDetails(5)
+      } else if (newValue === 7) {
         clearInterval(this.timer);
         this.timer = this.goDetails(1, true)
       }
@@ -76,12 +82,13 @@ export default {
       return setInterval(() => {
         if (this.currentDeg >= 360) {
           this.turnsNum++;
-          console.log(this.turnsNum);
         }
         this.currentDeg = (this.currentDeg >= 360) ? 0 : this.currentDeg + speed;
         if (stop === true && this.currentDeg >= this.degArr[this.stopNum]) {
           clearInterval(this.timer);
           this.currentDeg = this.degArr[this.stopNum];
+          this.isTurn = false;
+          this.turnsNum = 0;
         }
       }, 30)
     }

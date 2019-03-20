@@ -27,10 +27,12 @@
               alt=""
             ></div>
         </div>
-        <div
-          v-text="item.date"
-          w-10-14
-        ></div>
+        <div :class="[$style.datewrap,{[$style.dateorg]: item.status === 1,[$style.dategrey]: item.status === 0}]">
+          <div
+            v-text="item.date"
+            :class="$style.date"
+          ></div>
+        </div>
       </li>
     </ul>
     <div :class="[$style.footer]"></div>
@@ -84,20 +86,20 @@ export default {
         {
           value: '',
           date: '8月29日',
-          status: 1
+          status: 2
         },
       ]
     }
   },
   methods: {
     showCheck(index) {
-      if (this.lotteryDetails[index].status === 2) {
+      if (this.lotteryDetails[index].value === '') {
+        this.turnTableShow = true;
+      } else if (this.lotteryDetails[index].status === 2) {
         this.currentIntegral = this.lotteryDetails[index].value;
         this.checkInShow = true;
         this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
         this.lotteryDetails[index].status = 1;
-      } else if (this.lotteryDetails[index].value === '') {
-        this.turnTableShow = true;
       }
     },
   }
@@ -117,6 +119,7 @@ export default {
 }
 .liwrap {
   @mixin flexbox;
+  align-items: flex-start;
   flex-direction: column;
   color: #636363;
 }
@@ -138,6 +141,24 @@ export default {
   background-image: none;
   background-color: #fff8e6;
   color: #ff8200;
+}
+.datewrap {
+  position: relative;
+  height: 14px;
+}
+.date {
+  position: absolute;
+  font-size: 20px;
+  line-height: 28px;
+  transform: scale(0.5);
+  white-space: nowrap;
+  transform-origin: 0 0;
+}
+.dateorg {
+  color: #ff8200;
+}
+.dategrey {
+  color: #b6b6b6;
 }
 .footer {
   position: relative;
