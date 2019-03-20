@@ -20,6 +20,7 @@
           <div
             v-html="item.value"
             v-if="item.value"
+            :class="$style.value"
           ></div>
           <div v-else>
             <img
@@ -187,5 +188,11 @@ export default {
   line-height: 28px;
   transform: scale(0.5);
   transform-origin: 0 0;
+}
+.value{
+  font-weight: 600;
+  & >div{
+    margin-top: 2px;
+  }
 }
 </style>

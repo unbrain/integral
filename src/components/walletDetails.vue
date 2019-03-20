@@ -35,7 +35,7 @@
             v-text="item.time"
           ></div>
         </div>
-        <div>
+        <div :class="$style.right">
           <div
             :class="$style.listend"
             w-16-19
@@ -191,5 +191,10 @@ export default {
 
 .question {
   color: #507daf;
+}
+.right{
+  @mixin flexbox;
+  flex-direction: column;
+  align-items: flex-end;
 }
 </style>

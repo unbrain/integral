@@ -92,7 +92,7 @@ export default {
 .withdrawbtn {
   margin-bottom: 14px;
   padding: 3px 18px;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 50px;
   background-color: transparent;
   color: #fff;

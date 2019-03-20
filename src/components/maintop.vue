@@ -1,5 +1,13 @@
 <template>
   <div :class="$style.wrap">
+    <div :class="$style.fwrap" w-12-16>
+      <div :class="$style.left">
+        新玩法来袭
+      </div>
+      <div>
+        规则
+      </div>
+    </div>
     <div
       w-16-19
       :class="$style.top"
@@ -14,7 +22,10 @@
     <div w-30-44>
       2500
     </div>
-    <button :class="[$style.mybutton,$style.mainbtn]" @click="go">
+    <button
+      :class="[$style.mybutton,$style.mainbtn]"
+      @click="go"
+    >
       兑换
     </button>
   </div>
@@ -22,8 +33,8 @@
 
 <script>
 export default {
-  methods:{
-    go(){
+  methods: {
+    go() {
       this.$router.push('/wallet');
     }
   }
@@ -35,15 +46,32 @@ export default {
 .wrap {
   @mixin bg ../assets/bg.png;
   @mixin flexbox;
+  position: relative;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: 135px;
   color: #fff;
+}
+.fwrap {
+  @mixin flexbox;
+  position: absolute;
+  top: 8px;
+  justify-content: space-between;
+  width: 100vw;
+  padding-right: 10px;
+}
+.left {
+  left: 1px;
+  padding: 6px 12px 8px 8px;
+  background-image: linear-gradient(-134deg, #fbe438 0%, #ff9925 100%);
+  border-bottom-right-radius: 32px;
+  border-top-right-radius: 32px;
+  font-weight: 600;
 }
 .top {
   display: flex;
   align-items: center;
-  & img{
+  & img {
     margin-right: 4px;
   }
 }

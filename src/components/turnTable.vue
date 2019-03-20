@@ -46,7 +46,7 @@ export default {
       isTurn: false,
       turnsNum: 0,
       timer: '',
-      stopNum: 5,
+      stopNum: 0,
       degArr: [30, 90, 150, 210, 270, 330]
     }
   },

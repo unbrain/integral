@@ -39,7 +39,7 @@
                 :style="{width: `calc(100% * ${item.total} / 5)`}"
               ></div>
             </div>
-            <div c-b8b8b8>
+            <div c-b8b8b8 w-11-11>
               <span
                 c-org
                 v-text="item.total"

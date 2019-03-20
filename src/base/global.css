@@ -88,6 +88,11 @@ li {
   line-height: 15px;
 }
 
+[w-12-16] {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 [w-12-17] {
   font-size: 12px;
   line-height: 17px;
