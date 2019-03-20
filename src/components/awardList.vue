@@ -24,7 +24,7 @@
               c-org
             >
               <img
-                src="../assets/Group 17.png"
+                src="@/assets/Group 17.png"
                 alt=""
                 :class="$style.star"
               >
@@ -49,7 +49,7 @@
         </div>
         <div :class="$style.listright">
           <img
-            src="../assets/down.png"
+            src="@/assets/down.png"
             alt=""
             :class="$style.down"
           >

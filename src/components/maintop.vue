@@ -5,7 +5,7 @@
       title="$style.top"
     >
       <img
-        src="../assets/Group 17.png"
+        src="@/assets/Group 17.png"
         alt=""
         :class="$style.star"
       >

@@ -1,10 +1,11 @@
 <template>
   <div>
     <check-in
-      v-show="show"
+      v-show="checkInShow"
       :integral="currentIntegral"
-      @close="show = false"
+      @close="checkInShow = false"
     ></check-in>
+    <turn-table v-show="turnTableShow"></turn-table>
     <ul :class="$style.wrap">
       <li
         v-for="(item, index) in lotteryDetails"
@@ -22,7 +23,7 @@
           ></div>
           <div v-else>
             <img
-              src="../assets/pan_03.png"
+              src="@/assets/pan04.png"
               alt=""
             ></div>
         </div>
@@ -37,14 +38,17 @@
 </template>
 
 <script>
-import checkIn from '../components/checkIn';
+import checkIn from '@/components/checkIn';
+import turnTable from '@/components/turnTable';
 export default {
   components: {
     'check-in': checkIn,
+    'turn-table': turnTable
   },
   data() {
     return {
-      show: false,
+      checkInShow: false,
+      turnTableShow: false,
       currentIntegral: '',
       lotteryDetails: [
         {
@@ -89,11 +93,11 @@ export default {
     showCheck(index) {
       if (this.lotteryDetails[index].status === 2) {
         this.currentIntegral = this.lotteryDetails[index].value;
-        this.show = true;
+        this.checkInShow = true;
         this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
         this.lotteryDetails[index].status = 1;
-      }else if(this.lotteryDetails[index].value === ''){
-        console.log('fine')
+      } else if (this.lotteryDetails[index].value === '') {
+        this.turnTableShow = true;
       }
     },
   }
@@ -106,6 +110,10 @@ export default {
   @mixin flexbox;
   justify-content: space-around;
   width: 100vw;
+  & img {
+    width: 40px;
+    height: 40px;
+  }
 }
 .liwrap {
   @mixin flexbox;
@@ -158,9 +166,5 @@ export default {
   line-height: 28px;
   transform: scale(0.5);
   transform-origin: 0 0;
-}
-img {
-  width: 40px;
-  height: 40px;
 }
 </style>

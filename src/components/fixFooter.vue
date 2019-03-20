@@ -29,15 +29,15 @@ export default {
     return {
       imageUrls: [
         {
-          url: require('../assets/i_icon_wechat.svg'),
+          url: require('@/assets/i_icon_wechat.svg'),
           detail: '微信邀请'
         },
         {
-          url: require('../assets/i_icon_wechat_pyq.svg'),
+          url: require('@/assets/i_icon_wechat_pyq.svg'),
           detail: '朋友圈邀请'
         },
         {
-          url: require('../assets/i_icon_qq.svg'),
+          url: require('@/assets/i_icon_qq.svg'),
           detail: 'QQ邀请'
         }],
     };

@@ -6,7 +6,7 @@
   >
     <div :class="$style.toast">
       <img
-        src="../assets/close.png"
+        src="@/assets/close.png"
         alt=""
         :class="$style.close"
         @click="$emit('change')"
