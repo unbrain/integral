@@ -66,8 +66,8 @@
   "postcss": {
     "plugins": {
       "postcss-import": {},
-
       "postcss-mixins": {},
+      "postcss-aspect-ratio-mini": {},
       "postcss-write-svg": {},
       "postcss-cssnext": {},
       "postcss-px-to-viewport": {
@@ -78,7 +78,7 @@
           ".ignore",
           ".hairlines"
         ],
-        "minPixelValue": 1,
+        "minPixelValue": 3,
         "mediaQuery": false
       }
     }

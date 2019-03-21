@@ -47,7 +47,7 @@ export default {
 
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 .title {
   padding-bottom: 18px;
   padding-top: 5px;

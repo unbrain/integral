@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 .wrap {
   @mixin bg "@/assets/bg1.png";
   @mixin flexbox;

@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import checkIn from '@/components/checkIn';
-import turnTable from '@/components/turnTable';
+import checkIn from '@/components/integral/checkIn';
+import turnTable from '@/components/integral/turnTable';
 export default {
   components: {
     'check-in': checkIn,
@@ -108,7 +108,7 @@ export default {
 </script>
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 .wrap {
   @mixin flexbox;
   justify-content: space-around;

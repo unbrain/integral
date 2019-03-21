@@ -31,8 +31,32 @@
           :speed="5"
         ></fin-message-strip>
       </div>
+      <div>
+        <div
+          aspectratio
+          w-184-23
+          :class="$style.actiontimertimewrap"
+        >
+          <div aspectratio-content>
+            <div :class="$style.actiontimertime">
+              活动倒计时
+              <div :class="$style.actiontimertimechild">
+                <div>{{hours | formatDate}}</div>
+              </div>
+              时
+              <div :class="$style.actiontimertimechild">
+                <div>{{minutes | formatDate}}</div>
+              </div>
+              分
+              <div :class="$style.actiontimertimechild">
+                <div>{{second | formatDate}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div :class="$style.actiontimertimewrap">
+      <!-- <div :class="$style.actiontimertimewrap">
         <div :class="$style.actiontimertime">
           活动倒计时
           <div :class="$style.actiontimertimechild">
@@ -47,7 +71,7 @@
             <div>{{second | formatDate}}</div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <fin-lottery></fin-lottery>
   </div>
@@ -213,11 +237,13 @@ input[type="reset"] {
   width: 100%;
   color: #a05220;
 }
+
 .actiontimertimewrap {
-  @mixin flexbox;
-  height: 23px;
-  width: 184px;
+  /* background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
+  border-radius: 23px; */
   @mixin bg "@/assets/bg.png";
+  background-size: 100%;
+  /* height: 23px; */
 }
 
 .actiontimertime {

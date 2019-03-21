@@ -1,21 +1,21 @@
 <template>
   <div>
-    <maintop></maintop>
-    <ll></ll>
-    <award-list></award-list>
+    <int-main-top></int-main-top>
+    <int-lottery-list></int-lottery-list>
+    <int-award-list></int-award-list>
   </div>
 </template>
 
 <script>
-import maintop from '@/components/maintop';
-import ll from '@/components/lotteryList';
-import awardList from '@/components/awardList';
+import maintop from '@/components/integral/maintop';
+import lotteryList from '@/components/integral/lotteryList';
+import awardList from '@/components/integral/awardList';
 
 export default {
   components: {
-    maintop,
-    'll': ll,
-    'award-list':awardList
+    'int-main-top': maintop,
+    'int-lottery-list': lotteryList,
+    'int-award-list':awardList
   }
 }
 </script>

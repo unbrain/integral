@@ -44,7 +44,7 @@ export default {
 
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 
 .footer {
   position: fixed;

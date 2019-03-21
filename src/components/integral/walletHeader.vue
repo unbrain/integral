@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import withdrawToast from '@/components/withdrawToast';
+import withdrawToast from '@/components/integral/withdrawToast';
 
 export default {
   components: {
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 .headerwrap {
   background-image: linear-gradient(-58deg, #ffd53e 0%, #ff9925 100%);
   text-align: center;

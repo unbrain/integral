@@ -111,7 +111,7 @@ export default {
 </script>
 
 <style lang="postcss" module>
-@import "../base/global.css";
+@import "../../base/global.css";
 .top {
   display: flex;
   align-items: center;
@@ -185,6 +185,7 @@ export default {
   width: 65px;
   height: 28px;
   border-radius: 28px;
+  background-size: 100%;
   background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
   color: #fff;
 }
