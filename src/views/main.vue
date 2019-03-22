@@ -52,7 +52,7 @@ export default {
         inviteCode: '27543222',
         headImageUrl: require('@/assets/fi_mask.png'),
         headTimerMsg: ['福利继续，邀请1！', '邀请2！', '利继续，邀请3！', '福利继，邀请4！'],
-        deadLine: new Date(2019, 2, 22),
+        deadLine: new Date(2019, 2, 25),
       }, // 头部所需信息
       bodyDetail: {
         limitNum: '1/30',

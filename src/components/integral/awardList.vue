@@ -39,7 +39,10 @@
                 :style="{width: `calc(100% * ${item.total} / 5)`}"
               ></div>
             </div>
-            <div c-b8b8b8 w-11-11>
+            <div
+              c-b8b8b8
+              w-11-11
+            >
               <span
                 c-org
                 v-text="item.total"
@@ -58,7 +61,11 @@
             c-org
             w-12-17
             v-if="item.status"
-          >去完成</button>
+          >
+            <div>
+              去完成
+            </div>
+          </button>
           <button
             :class="$style.getbutton"
             v-else
@@ -168,8 +175,10 @@ export default {
   margin-right: 6px;
 }
 .button {
+  @mixin flexbox;
   width: 65px;
   height: 28px;
+  line-height: 28px !important;
 }
 .button::after {
   border-color: #ff8200;
@@ -189,7 +198,7 @@ export default {
   background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
   color: #fff;
 }
-.getbutton::after{
+.getbutton::after {
   display: block;
   font-size: 22px;
   white-space: nowrap;

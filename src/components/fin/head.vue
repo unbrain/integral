@@ -242,7 +242,7 @@ input[type="reset"] {
   /* background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
   border-radius: 23px; */
   @mixin bg "@/assets/bg.png";
-  background-size: 100%;
+  /* background-size: 100%; */
   /* height: 23px; */
 }
 

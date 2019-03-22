@@ -32,7 +32,7 @@
       :class="[$style.mybutton,$style.mainbtn]"
       @click="go"
     >
-      兑换
+      <div>兑换</div>
     </button>
   </div>
 </template>
