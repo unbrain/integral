@@ -51,7 +51,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #404040;
+  background: rgba(40, 40, 40, 0.9);
 }
 .coin {
   padding: 24px 0 35px 0;

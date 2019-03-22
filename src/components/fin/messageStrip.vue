@@ -166,4 +166,16 @@ export default {
 .list-leave-active {
   position: absolute;
 }
+
+.listc-enter {
+  transition: 1s ease;
+  transform: scaleY(0);
+}
+.listc-enter-active {
+  transition: 1s ease;
+}
+
+.listc-leave-active {
+  position: absolute;
+}
 </style>

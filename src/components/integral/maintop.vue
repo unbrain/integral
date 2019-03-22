@@ -77,7 +77,12 @@ export default {
   font-weight: 600;
 }
 .right {
-  padding-right: 10px;
+  margin-left: 18px;
+  padding: 2px 8px;
+  border-radius: 21px;
+}
+.right:active{
+  background: rgba(240,240,240, 0.66);
 }
 .top {
   display: flex;

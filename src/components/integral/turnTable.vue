@@ -2,7 +2,6 @@
   <div
     :class="$style.wrap"
     @mousewheel.prevent
-    @click="$emit('close')"
   >
     <img
       src="@/assets/turnup_03.png"
@@ -34,6 +33,13 @@
       >
       炫耀一下
     </div>
+    <svg
+      :class="[$style.icon,$style.myicon]"
+      aria-hidden="true"
+      @click="$emit('close')"
+    >
+      <use xlink:href="#icon-close"></use>
+    </svg>
   </div>
 </template>
 
@@ -76,6 +82,8 @@ export default {
       if (!this.isTurn) {
         this.timer = this.goDetails(30);
         this.isTurn = true;
+      } else {
+        this.$toast('下周再来吧孩子', { svg: '#icon-waring' });
       }
     },
     goDetails(speed, stop = false) {
@@ -87,7 +95,6 @@ export default {
         if (stop === true && this.currentDeg >= this.degArr[this.stopNum]) {
           clearInterval(this.timer);
           this.currentDeg = this.degArr[this.stopNum];
-          this.isTurn = false;
           this.turnsNum = 0;
         }
       }, 30)
@@ -142,5 +149,11 @@ export default {
     width: 10px;
     height: 10px;
   }
+}
+.myicon {
+  padding-top: 30px;
+  fill: white;
+  width: 30px;
+  height: 30px;
 }
 </style>

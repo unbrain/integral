@@ -1,6 +1,10 @@
 <template>
   <div :class="$style.headerwrap">
-    <withdraw-toast :is-show="isShow" @change="isShow = false"></withdraw-toast>
+    <withdraw-toast
+      :is-show="isShow"
+      @change="isShow = false"
+      :current-itegral="currentItegral"
+    ></withdraw-toast>
     <div :class="$style.topwrap">
       <div :class="$style.top">
         <div
@@ -26,6 +30,7 @@
         <button
           w-12-16
           :class="$style.withdrawbtn"
+          @click="withdraw"
         >提现</button>
       </div>
     </div>
@@ -49,13 +54,16 @@ export default {
   data() {
     return {
       currentItegral: 2560,
-      currentGet: 18.9,
+      currentGet: 34.5,
       isShow: false
     }
   },
   methods: {
     changeMoney() {
       this.isShow = !this.isShow
+    },
+    withdraw(){
+      this.$toast('要一百万元才能体现',  { svg: '#icon-waring' })
     }
   }
 }

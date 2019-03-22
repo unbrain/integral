@@ -12,65 +12,79 @@
         v-for="(item ,index) in awardDetails"
         :key="index"
       >
-        <div>
-          <div :class="$style.titlewrap">
-            <div
-              w-16-22
-              v-text="item.title"
-            ></div>
-            <div
-              w-14-20
-              :class="$style.titledetails"
-              c-org
-            >
-              <img
-                src="@/assets/Group 17.png"
-                alt=""
-                :class="$style.star"
+        <div :class="$style.listfirst">
+          <div>
+            <div :class="$style.titlewrap">
+              <div
+                w-16-22
+                v-text="item.title"
+              ></div>
+              <div
+                w-14-20
+                :class="$style.titledetails"
+                c-org
               >
-              <div v-text="item.integral">
+                <img
+                  src="@/assets/Group 17.png"
+                  alt=""
+                  :class="$style.star"
+                >
+                <div v-text="item.integral">
+                </div>
+              </div>
+            </div>
+            <div :class="$style.barwrap">
+              <div :class="$style.bar">
+                <div
+                  :class="[$style.barinner, {[$style.fullbarinner]: item.total === 5}]"
+                  :style="{width: `calc(100% * ${item.total} / 5)`}"
+                ></div>
+              </div>
+              <div
+                c-b8b8b8
+                w-11-11
+              >
+                <span
+                  c-org
+                  v-text="item.total"
+                ></span>/5
               </div>
             </div>
           </div>
-          <div :class="$style.barwrap">
-            <div :class="$style.bar">
-              <div
-                :class="[$style.barinner, {[$style.fullbarinner]: item.total === 5}]"
-                :style="{width: `calc(100% * ${item.total} / 5)`}"
-              ></div>
-            </div>
-            <div
-              c-b8b8b8
-              w-11-11
+          <div :class="$style.listright">
+            <img
+              src="@/assets/down.png"
+              alt=""
+              :class="[$style.down,{[$style.up]: item.show === true}]"
+              @click="down(index)"
             >
-              <span
-                c-org
-                v-text="item.total"
-              ></span>/5
-            </div>
+            <button
+              :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.total === 5}]"
+              c-org
+              w-12-17
+              v-if="item.status!==0"
+              :disabled="item.total===5"
+            >
+              <div>
+                去完成
+              </div>
+            </button>
+            <button
+              :class="$style.getbutton"
+              v-else
+            ></button>
           </div>
         </div>
-        <div :class="$style.listright">
-          <img
-            src="@/assets/down.png"
-            alt=""
-            :class="$style.down"
+        <transition name="listc">
+          <div
+            :class="$style.listsec"
+            c-999
+            w-14-20
+            v-if="item.show"
           >
-          <button
-            :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.status === 2}]"
-            c-org
-            w-12-17
-            v-if="item.status"
-          >
-            <div>
-              去完成
-            </div>
-          </button>
-          <button
-            :class="$style.getbutton"
-            v-else
-          ></button>
-        </div>
+            暂未开放，感谢体验
+          </div>
+        </transition>
       </li>
     </ul>
   </div>
@@ -82,36 +96,43 @@ export default {
     return {
       awardDetails: [
         {
-          title: '标题标题标题',
+          title: '刷微博',
           integral: '+50',
           total: 0,
-          status: 0
+          status: 0,
+          show: false,
         },
         {
-          title: '标题标题标题',
+          title: '点赞',
           integral: '+50',
           total: 1,
-          status: 1
+          show: false
         },
         {
-          title: '标题标题标题',
+          title: '关注',
           integral: '+50',
-          total: 2,
-          status: 2
+          total: 5,
+          show: false
         },
         {
           title: '标题标题标题',
           integral: '+50',
           total: 4,
-          status: 1
+          show: false
         },
         {
           title: '标题标题标题',
           integral: '+50',
           total: 5,
-          status: 1
+          show: false
         }
       ]
+    }
+  },
+  methods: {
+    down(index) {
+      // this.$toast('暂未开放，感谢体验', { svg: "#icon-warning" });
+      this.awardDetails[index].show = !this.awardDetails[index].show;
     }
   }
 }
@@ -119,6 +140,7 @@ export default {
 
 <style lang="postcss" module>
 @import "../../base/global.css";
+
 .top {
   display: flex;
   align-items: center;
@@ -134,6 +156,9 @@ export default {
   }
 }
 .list {
+}
+
+.listfirst {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,6 +167,14 @@ export default {
   border-bottom: 1px solid transparent;
   border-image: svg(1px-border param(--color #e3e3e3)) 1 stretch;
 }
+
+.listsec {
+  margin: 0 16px 10px 16px;
+  padding: 10px 0 21px 0;
+  border-bottom: 1px solid transparent;
+  border-image: svg(1px-border param(--color #e3e3e3)) 1 stretch;
+}
+
 .titlewrap {
   @mixin flexbox;
   margin-bottom: 5px;
@@ -203,13 +236,17 @@ export default {
   font-size: 22px;
   white-space: nowrap;
   transform: scale(0.5);
-  content: "领取20积分";
+  content: "领取50积分";
   transform-origin: 4px;
 }
 .down {
   width: 21px;
   height: 13px;
-  padding-right: 18px;
+  margin-right: 18px;
+  cursor: pointer;
+}
+.up {
+  transform: rotate(180deg);
 }
 .listright {
   display: flex;

@@ -5,7 +5,10 @@
       :integral="currentIntegral"
       @close="checkInShow = false"
     ></check-in>
-    <turn-table v-show="turnTableShow"></turn-table>
+    <turn-table
+      v-show="turnTableShow"
+      @close="turnTableShow = false"
+    ></turn-table>
     <ul :class="$style.wrap">
       <li
         v-for="(item, index) in lotteryDetails"
@@ -15,7 +18,6 @@
         <div
           :class="[$style.circle,{[$style.grey]: item.status === 0,[$style.pink]: item.status=== 2}]"
           w-11-11
-          @click="showCheck(index)"
         >
           <div
             v-html="item.value"
@@ -26,6 +28,7 @@
             <img
               src="@/assets/pan04.png"
               alt=""
+                        @click="showCheck(index)"
             ></div>
         </div>
         <div :class="[$style.datewrap,{[$style.dateorg]: item.status === 1,[$style.dategrey]: item.status === 0}]">
@@ -94,15 +97,19 @@ export default {
   },
   methods: {
     showCheck(index) {
-      if (this.lotteryDetails[index].value === '') {
-        this.turnTableShow = true;
-      } else if (this.lotteryDetails[index].status === 2) {
-        this.currentIntegral = this.lotteryDetails[index].value;
-        this.checkInShow = true;
-        this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
-        this.lotteryDetails[index].status = 1;
-      }
+        if (this.lotteryDetails[index].value === '') {
+          this.turnTableShow = true;
+        } else if (this.lotteryDetails[index].status === 2) {
+          this.currentIntegral = this.lotteryDetails[index].value;
+          this.checkInShow = true;
+          this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
+          this.lotteryDetails[index].status = 1;
+          this.todayGet = true;
+        }
     },
+  },
+  mounted() {
+    this.showCheck(3);
   }
 }
 </script>
@@ -189,9 +196,9 @@ export default {
   transform: scale(0.5);
   transform-origin: 0 0;
 }
-.value{
+.value {
   font-weight: 600;
-  & >div{
+  & > div {
     margin-top: 2px;
   }
 }

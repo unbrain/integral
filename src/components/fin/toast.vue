@@ -105,6 +105,7 @@ $min-height: 40px;
   font-size: $font-size;
   word-break: break-all;
   transform: translate(-50%, -50%);
+  z-index: 100;
 }
 
 .message {

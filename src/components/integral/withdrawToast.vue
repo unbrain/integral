@@ -9,7 +9,7 @@
         src="@/assets/close.png"
         alt=""
         :class="$style.close"
-        @click="$emit('change')"
+        @click="close"
       >
       <div
         w-17-24
@@ -22,7 +22,6 @@
         :class="$style.input"
         v-model="input"
         placeholder="至少输入10积分"
-        @focus="focus"
       >
       <div
         w-11-15
@@ -32,9 +31,15 @@
             c-org
             v-text="canDraw"
           ></span><span c-org>元</span></div>
-        <div c-blu>全部兑换</div>
+        <div
+          c-blu
+          @click="input = currentItegral"
+        >全部兑换</div>
       </div>
-      <button :class="[$style.toastbtn, {[$style.candraw]: status}]">
+      <button
+        :class="[$style.toastbtn, {[$style.candraw]: status}]"
+        @click="withdraw"
+      >
         兑换
       </button>
       <div
@@ -49,11 +54,11 @@
 
 <script>
 export default {
-  props: ['isShow'],
+  props: ['isShow', 'currentItegral'],
   data() {
     return {
       rate: 1 / 1000,
-      canDraw: '0.0',
+      canDraw: '0.00',
       input: '',
       status: false
     }
@@ -66,17 +71,22 @@ export default {
   watch: {
     input(newValue) {
       if (newValue >= 10) {
-        this.canDraw = this.input * this.rate;
+        this.canDraw = (this.input * this.rate).toFixed(2);
         this.status = true;
       } else {
-        this.canDraw = '0.0';
+        this.canDraw = '0.00';
         this.status = false;
       }
     }
   },
   methods: {
-    focus() {
+    close() {
+      this.$emit('change');
       this.input = '';
+    },
+    withdraw() {
+      this.close()
+      this.$toast('正在兑换中...', { closeDelay: 10, autoplay: true, svg: "#icon-loading" })
     }
   }
 }
