@@ -5,6 +5,7 @@ import withdraw from '@/views/withdraw';
 import best from '@/views/best';
 import main from '@/views/main.vue';
 import awardRecord from '@/views/awardRecord.vue';
+import cash from '@/views/cash';
 
 Vue.use(Router);
 
@@ -36,5 +37,10 @@ export default new Router({
       component: awardRecord,
       props: true
     },
+    {
+      path: '/cash/:cash',
+      name: 'cash',
+      component: cash
+    }
   ]
 });

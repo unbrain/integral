@@ -64,6 +64,7 @@
               w-12-17
               v-if="item.status!==0"
               :disabled="item.total===5"
+              @click="plus(index)"
             >
               <div>
                 去完成
@@ -72,6 +73,7 @@
             <button
               :class="$style.getbutton"
               v-else
+              @click="plus(index)"
             ></button>
           </div>
         </div>
@@ -133,6 +135,10 @@ export default {
     down(index) {
       // this.$toast('暂未开放，感谢体验', { svg: "#icon-warning" });
       this.awardDetails[index].show = !this.awardDetails[index].show;
+    },
+    plus(index) {
+      this.awardDetails[index].status = 1;
+      this.awardDetails[index].total = (this.awardDetails[index].total >= 5) ? 5 : this.awardDetails[index].total + 1;
     }
   }
 }

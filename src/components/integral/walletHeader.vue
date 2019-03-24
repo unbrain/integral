@@ -62,8 +62,8 @@ export default {
     changeMoney() {
       this.isShow = !this.isShow
     },
-    withdraw(){
-      this.$toast('要一百万元才能体现',  { svg: '#icon-waring' })
+    withdraw() {
+      this.$router.push({ name: 'cash', query:{cash:this.currentGet}});
     }
   }
 }
