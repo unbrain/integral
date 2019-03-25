@@ -56,7 +56,7 @@ export default {
 .coin {
   padding: 24px 0 35px 0;
   transform-style: preserve-3d;
-  animation: move_eye 4s linear 0s infinite alternate;
+  animation: move_eye 4s linear 0s infinite;
   & img {
     height: 75px;
     width: 75px;
@@ -71,10 +71,10 @@ export default {
 
 @keyframes move_eye {
   from {
-    transform: rotateY(90deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotateY(-90deg);
+    transform: rotateY(360deg);
   }
 }
 </style>
