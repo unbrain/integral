@@ -58,9 +58,10 @@ export default {
     width: 75px;
     @mixin bg "@/assets/jinbi0.png";
     transform-style: preserve-3d;
-    animation: move_jinbi 4s cubic-bezier(1, -0.18, 1, -0.17) infinite;
+    animation: move_jinbi 4s  infinite;
   }
 }
+/* cubic-bezier(1, -0.18, 1, -0.17) */
 .footer {
   & img {
     width: 10px;
@@ -80,6 +81,9 @@ export default {
 @keyframes move_jinbi {
   0 {
     @mixin bg "@/assets/jinbi0.png";
+  }
+  12.4% {
+    transform: rotateY(12.5deg);
   }
   12.5% {
     @mixin bg "@/assets/jinbi1.png";

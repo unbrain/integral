@@ -33,7 +33,10 @@
                 </div>
               </div>
             </div>
-            <div :class="$style.barwrap">
+            <div
+              :class="$style.barwrap"
+              v-show="item.all"
+            >
               <div :class="$style.bar">
                 <div
                   :class="[$style.barinner, {[$style.fullbarinner]: item.total === item.all}]"
@@ -59,24 +62,26 @@
               @click="down(index)"
             >
             <button
-              :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.total === item.all}]"
+              :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.total-item.all===0}]"
               c-org
               w-12-17
               v-if="item.total !== item.all || item.status !== 0"
-              :disabled="item.total===item.all"
+              :disabled=" item.total-item.all===0"
               @click="plus(index)"
             >
               <div v-if="item.total < item.all">
                 去完成
               </div>
+              <div v-else-if="item.status === 3">去邀请</div>
               <div v-else-if="item.total === item.all">已领取</div>
+
             </button>
             <button
               :class="$style.getbutton"
               v-else
               @click="changeStatus(index)"
             >
-            <div :class="$style.getbuttoncontext">领取{{item.integral}}积分</div>
+              <div :class="$style.getbuttoncontext">领取{{item.integral}}积分</div>
             </button>
           </div>
         </div>
@@ -91,6 +96,7 @@
           </div>
         </transition>
       </li>
+
     </ul>
   </div>
 </template>
@@ -101,10 +107,16 @@ export default {
     return {
       awardDetails: [
         {
+          title: '唤醒老铁',
+          integral: '300',
+          status: 3,
+          show: false,
+        },
+        {
           title: '刷微博',
           integral: '30',
           total: 0,
-          all: 10,
+          all: 3,
           status: 0,
           show: false,
         },
@@ -124,22 +136,22 @@ export default {
           status: 0,
           show: false
         },
-        {
-          title: '标题标题标题',
-          integral: '50',
-          total: 4,
-          all: 10,
-          status: 0,
-          show: false
-        },
-        {
-          title: '标题标题标题',
-          integral: '50',
-          total: 5,
-          all: 10,
-          status: 0,
-          show: false
-        }
+        // {
+        //   title: '标题标题标题',
+        //   integral: '50',
+        //   total: 4,
+        //   all: 10,
+        //   status: 0,
+        //   show: false
+        // },
+        // {
+        //   title: '标题标题标题',
+        //   integral: '50',
+        //   total: 5,
+        //   all: 10,
+        //   status: 0,
+        //   show: false
+        // }
       ]
     }
   },
@@ -149,11 +161,15 @@ export default {
       this.awardDetails[index].show = !this.awardDetails[index].show;
     },
     plus(index) {
-      this.awardDetails[index].total = (this.awardDetails[index].total >= this.awardDetails[index].all) ? this.awardDetails[index].all : this.awardDetails[index].total + 1;
+      if (this.awardDetails[index].status === 3) {
+        this.$router.push('/main');
+      } else {
+        this.awardDetails[index].total = (this.awardDetails[index].total >= this.awardDetails[index].all) ? this.awardDetails[index].all : this.awardDetails[index].total + 1;
+      }
     },
     changeStatus(index) {
       this.awardDetails[index].status = 1;
-    }
+    },
   }
 }
 </script>
