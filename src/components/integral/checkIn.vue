@@ -14,10 +14,7 @@
       ></span>积分
     </div>
     <div :class="$style.coin">
-      <img
-        src="@/assets/bin_03.png"
-        alt=""
-      >
+      <div></div>
     </div>
     <div
       :class="$style.footer"
@@ -56,10 +53,12 @@ export default {
 .coin {
   padding: 24px 0 35px 0;
   transform-style: preserve-3d;
-  animation: move_eye 4s linear 0s infinite;
-  & img {
+  & div {
     height: 75px;
     width: 75px;
+    @mixin bg "@/assets/jinbi0.png";
+    transform-style: preserve-3d;
+    animation: move_jinbi 4s cubic-bezier(1, -0.18, 1, -0.17) infinite;
   }
 }
 .footer {
@@ -69,12 +68,42 @@ export default {
   }
 }
 
-@keyframes move_eye {
-  from {
+@keyframes rt {
+  0 {
     transform: rotateY(0deg);
   }
-  to {
-    transform: rotateY(360deg);
+  100% {
+    transform: rotateY(20deg);
+  }
+}
+
+@keyframes move_jinbi {
+  0 {
+    @mixin bg "@/assets/jinbi0.png";
+  }
+  12.5% {
+    @mixin bg "@/assets/jinbi1.png";
+  }
+  25% {
+    @mixin bg "@/assets/jinbi2.png";
+  }
+  37.5% {
+    @mixin bg "@/assets/jinbi3.png";
+  }
+  50% {
+    @mixin bg "@/assets/jinbi4.png";
+  }
+  62.5% {
+    @mixin bg "@/assets/jinbi5.png";
+  }
+  75% {
+    @mixin bg "@/assets/jinbi7.png";
+  }
+  87.5% {
+    @mixin bg "@/assets/jinbi8.png";
+  }
+  100% {
+    @mixin bg "@/assets/jinbi9.png";
   }
 }
 </style>

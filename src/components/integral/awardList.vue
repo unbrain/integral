@@ -12,7 +12,7 @@
         v-for="(item ,index) in awardDetails"
         :key="index"
       >
-        <div :class="$style.listfirst">
+        <div :class="[$style.listfirst, {[$style.listfirstlast]: index === awardDetails.length-1 && !item.show}]">
           <div>
             <div :class="$style.titlewrap">
               <div
@@ -162,6 +162,7 @@ export default {
   }
 }
 .list {
+
 }
 
 .listfirst {
@@ -173,7 +174,9 @@ export default {
   border-bottom: 1px solid transparent;
   border-image: svg(1px-border param(--color #e3e3e3)) 1 stretch;
 }
-
+.listfirstlast{
+  border-bottom: none;
+}
 .listsec {
   margin: 0 16px 10px 16px;
   padding: 10px 0 21px 0;

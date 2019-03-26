@@ -28,8 +28,13 @@
             <img
               src="@/assets/pan04.png"
               alt=""
-                        @click="showCheck(index)"
-            ></div>
+              @click="showCheck(index)"
+            >
+          </div>
+          <div
+            :class="[$style.colorbar,{[$style.missbar]: item.status === 2}]"
+            v-show="index !== 0"
+          ></div>
         </div>
         <div :class="[$style.datewrap,{[$style.dateorg]: item.status === 1,[$style.dategrey]: item.status === 0}]">
           <div
@@ -97,15 +102,15 @@ export default {
   },
   methods: {
     showCheck(index) {
-        if (this.lotteryDetails[index].value === '') {
-          this.turnTableShow = true;
-        } else if (this.lotteryDetails[index].status === 2) {
-          this.currentIntegral = this.lotteryDetails[index].value;
-          this.checkInShow = true;
-          this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
-          this.lotteryDetails[index].status = 1;
-          this.todayGet = true;
-        }
+      if (this.lotteryDetails[index].value === '') {
+        this.turnTableShow = true;
+      } else if (this.lotteryDetails[index].status === 2) {
+        this.currentIntegral = this.lotteryDetails[index].value;
+        this.checkInShow = true;
+        this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
+        this.lotteryDetails[index].status = 1;
+        this.todayGet = true;
+      }
     },
   },
   mounted() {
@@ -133,6 +138,7 @@ export default {
 }
 .circle {
   @mixin flexbox;
+  position: relative;
   margin: 5px 0;
   height: 40px;
   width: 40px;
@@ -201,5 +207,19 @@ export default {
   & > div {
     margin-top: 2px;
   }
+}
+.colorbar {
+  position: absolute;
+  z-index: -1;
+  width: 40px;
+  height: 4px;
+  background-image: linear-gradient(132deg, #fbe438 0%, #ff9925 100%);
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+}
+.missbar {
+  background-image: none;
+  background-color: #fff8e6;
 }
 </style>

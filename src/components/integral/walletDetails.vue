@@ -20,7 +20,7 @@
     </div>
     <ul :class="$style.listwrap">
       <li
-        :class="$style.list"
+        :class="[$style.list, {[$style.lastlist]: index === listDetails.length - 1}]"
         v-for="(item, index) in listDetails"
         :key="index"
       >
@@ -170,6 +170,9 @@ export default {
   border-bottom: 1px solid transparent;
   border-image: svg(1px-border param(--color #e6e6e6)) 1 stretch;
   color: #333;
+}
+.lastlist{
+  border-bottom: none;
 }
 .listend {
   display: flex;
