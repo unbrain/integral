@@ -10,7 +10,10 @@
       >
         新玩法来袭
       </div>
-      <div :class="$style.right">
+      <div
+        :class="$style.right"
+        @click="actionShow=true"
+      >
         规则
       </div>
     </div>
@@ -34,11 +37,21 @@
     >
       <div>兑换</div>
     </button>
+    <fin-action-description v-show="actionShow" @close="actionShow = false"></fin-action-description>
   </div>
 </template>
 
 <script>
+import actionDescription from '@/components/fin/actionDescription';
 export default {
+  components: {
+    'fin-action-description': actionDescription
+  },
+  data() {
+    return {
+      actionShow: false
+    }
+  },
   methods: {
     go() {
       this.$router.push('/wallet');
@@ -81,8 +94,8 @@ export default {
   padding: 2px 8px;
   border-radius: 21px;
 }
-.right:active{
-  background: rgba(240,240,240, 0.66);
+.right:active {
+  background: rgba(240, 240, 240, 0.66);
 }
 .top {
   display: flex;

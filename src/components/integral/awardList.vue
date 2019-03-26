@@ -29,15 +29,15 @@
                   alt=""
                   :class="$style.star"
                 >
-                <div v-text="item.integral">
+                <div v-text="'+'+item.integral">
                 </div>
               </div>
             </div>
             <div :class="$style.barwrap">
               <div :class="$style.bar">
                 <div
-                  :class="[$style.barinner, {[$style.fullbarinner]: item.total === 5}]"
-                  :style="{width: `calc(100% * ${item.total} / 5)`}"
+                  :class="[$style.barinner, {[$style.fullbarinner]: item.total === item.all}]"
+                  :style="{width: `calc(100% * ${item.total} / ${item.all})`}"
                 ></div>
               </div>
               <div
@@ -47,7 +47,7 @@
                 <span
                   c-org
                   v-text="item.total"
-                ></span>/5
+                ></span>/{{item.all}}
               </div>
             </div>
           </div>
@@ -59,22 +59,25 @@
               @click="down(index)"
             >
             <button
-              :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.total === 5}]"
+              :class="[$style.mybutton,$style.button, {[$style.greybutton]: item.total === item.all}]"
               c-org
               w-12-17
-              v-if="item.status!==0"
-              :disabled="item.total===5"
+              v-if="item.total !== item.all || item.status !== 0"
+              :disabled="item.total===item.all"
               @click="plus(index)"
             >
-              <div>
+              <div v-if="item.total < item.all">
                 去完成
               </div>
+              <div v-else-if="item.total === item.all">已领取</div>
             </button>
             <button
               :class="$style.getbutton"
               v-else
-              @click="plus(index)"
-            ></button>
+              @click="changeStatus(index)"
+            >
+            <div :class="$style.getbuttoncontext">领取{{item.integral}}积分</div>
+            </button>
           </div>
         </div>
         <transition name="listc">
@@ -99,33 +102,42 @@ export default {
       awardDetails: [
         {
           title: '刷微博',
-          integral: '+50',
+          integral: '30',
           total: 0,
+          all: 10,
           status: 0,
           show: false,
         },
         {
           title: '点赞',
-          integral: '+50',
+          integral: '50',
           total: 1,
+          all: 10,
+          status: 0,
           show: false
         },
         {
           title: '关注',
-          integral: '+50',
+          integral: '20',
           total: 5,
+          all: 5,
+          status: 0,
           show: false
         },
         {
           title: '标题标题标题',
-          integral: '+50',
+          integral: '50',
           total: 4,
+          all: 10,
+          status: 0,
           show: false
         },
         {
           title: '标题标题标题',
-          integral: '+50',
+          integral: '50',
           total: 5,
+          all: 10,
+          status: 0,
           show: false
         }
       ]
@@ -137,8 +149,10 @@ export default {
       this.awardDetails[index].show = !this.awardDetails[index].show;
     },
     plus(index) {
+      this.awardDetails[index].total = (this.awardDetails[index].total >= this.awardDetails[index].all) ? this.awardDetails[index].all : this.awardDetails[index].total + 1;
+    },
+    changeStatus(index) {
       this.awardDetails[index].status = 1;
-      this.awardDetails[index].total = (this.awardDetails[index].total >= 5) ? 5 : this.awardDetails[index].total + 1;
     }
   }
 }
@@ -162,7 +176,6 @@ export default {
   }
 }
 .list {
-
 }
 
 .listfirst {
@@ -174,7 +187,7 @@ export default {
   border-bottom: 1px solid transparent;
   border-image: svg(1px-border param(--color #e3e3e3)) 1 stretch;
 }
-.listfirstlast{
+.listfirstlast {
   border-bottom: none;
 }
 .listsec {
@@ -240,12 +253,11 @@ export default {
   background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
   color: #fff;
 }
-.getbutton::after {
+.getbuttoncontext {
   display: block;
   font-size: 22px;
   white-space: nowrap;
   transform: scale(0.5);
-  content: "领取50积分";
   transform-origin: 4px;
 }
 .down {

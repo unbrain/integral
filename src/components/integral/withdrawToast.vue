@@ -33,7 +33,7 @@
           ></span><span c-org>元</span></div>
         <div
           c-blu
-          @click="input = currentItegral"
+          @click="input = currentIntegral"
         >全部兑换</div>
       </div>
       <button
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  props: ['isShow', 'currentItegral'],
+  props: ['isShow', 'currentIntegral'],
   data() {
     return {
       rate: 1 / 1000,
@@ -70,8 +70,8 @@ export default {
   },
   watch: {
     input(newValue) {
-      if (newValue >= 10) {
-        this.canDraw = (this.input * this.rate).toFixed(2);
+      if (newValue >= 10 && newValue <= this.currentIntegral) {
+        this.canDraw = parseInt((this.input * this.rate) * 100) / 100;
         this.status = true;
       } else {
         this.canDraw = '0.00';
@@ -85,8 +85,11 @@ export default {
       this.input = '';
     },
     withdraw() {
-      this.close()
-      this.$toast('正在兑换中...', { closeDelay: 10, autoplay: true, svg: "#icon-loading" })
+      if (this.status) {
+        this.$emit('withdraw', [this.canDraw, Number(this.canDraw)/this.rate]);
+        this.close();
+        this.$toast('兑换成功');
+      }
     }
   }
 }

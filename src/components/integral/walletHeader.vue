@@ -3,7 +3,8 @@
     <withdraw-toast
       :is-show="isShow"
       @change="isShow = false"
-      :current-itegral="currentItegral"
+      @withdraw="withdraw"
+      :current-integral="currentIntegral"
     ></withdraw-toast>
     <div :class="$style.topwrap">
       <div :class="$style.top">
@@ -13,7 +14,7 @@
         >我的积分</div>
         <div
           w-40-52
-          v-text="currentItegral"
+          v-text="currentIntegral"
         ></div>
         <button
           w-12-16
@@ -53,17 +54,21 @@ export default {
   },
   data() {
     return {
-      currentItegral: 2560,
+      currentIntegral: 2560,
       currentGet: 34.5,
       isShow: false
     }
   },
   methods: {
     changeMoney() {
-      this.isShow = !this.isShow
+      this.isShow = !this.isShow;
     },
     withdraw() {
       this.$router.push({ name: 'cash', query:{cash:this.currentGet}});
+    },
+    withdraw(arr){
+      this.currentGet = this.currentGet + Number(arr[0]);
+      this.currentIntegral = this.currentIntegral - arr[1];
     }
   }
 }
