@@ -166,12 +166,9 @@ export default {
   height: 14px;
 }
 .date {
-  position: absolute;
+  @mixin halffontsize;
   font-size: 20px;
   line-height: 28px;
-  transform: scale(0.5);
-  white-space: nowrap;
-  transform-origin: 0 0;
 }
 .dateorg {
   color: #ff8200;
@@ -198,13 +195,9 @@ export default {
   top: 50%;
 }
 .footercontext {
-  position: absolute;
-  display: block;
-  white-space: nowrap;
+  @mixin halffontsize;
   font-size: 20px;
   line-height: 28px;
-  transform: scale(0.5);
-  transform-origin: 0 0;
 }
 .value {
   font-weight: 600;

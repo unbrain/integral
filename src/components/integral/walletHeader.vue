@@ -64,9 +64,9 @@ export default {
       this.isShow = !this.isShow;
     },
     withdrawCash() {
-      this.$router.push({ name: 'cash', query:{cash:this.currentGet}});
+      this.$router.push({ name: 'cash', query: { cash: this.currentGet } });
     },
-    withdraw(arr){
+    withdraw(arr) {
       this.currentGet = this.currentGet + Number(arr[0]);
       this.currentIntegral = this.currentIntegral - arr[1];
     }

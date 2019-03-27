@@ -219,7 +219,7 @@ ol {
 
 .mybutton {
   position: relative;
-  border-radius: 50px;
+  border-radius: 7.467vw;
   border: 1px solid transparent;
   color: #fff;
   background: transparent;
@@ -236,7 +236,7 @@ ol {
     top: 0;
     background: transparent;
     border: 1px solid #fff;
-    border-radius: 100px;
+    border-radius: 7.467vw;
   }
 }
 
@@ -252,7 +252,7 @@ ol {
     border: 1px solid #fff;
     transform: scale(0.5);
     transform-origin: -1px -1px;
-    border-radius: 50px;
+    border-radius: 7.467vw;
   }
 }
 
@@ -268,7 +268,7 @@ ol {
     border: 2px solid #fff;
     transform: scale(0.3333);
     transform-origin: 0 0;
-    border-radius: 150px;
+    border-radius: 7.467vw;
   }
 }
 

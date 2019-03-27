@@ -21,3 +21,10 @@
   height: 80px;
   border-radius: 23px;
 }
+
+@define-mixin halffontsize {
+  position: absolute;
+  white-space: nowrap;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}

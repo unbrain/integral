@@ -1,7 +1,11 @@
 <template>
   <div :class="$style.wrap">
     <div :class="$style.whitewrap">
-      <div :class="$style.title">每成功邀请1位老铁，赠送一次抽奖，<span>100％</span>中奖</div>
+      <div :class="$style.title">
+        <div :class="[$style.titlecontext]">
+          每成功邀请1位老铁，赠送一次抽奖，<span>100％</span>中奖
+        </div>
+      </div>
       <ul :class="$style.svgContain">
         <li
           v-for="(item, index) in svgIcons"
@@ -225,7 +229,6 @@ export default {
 
 <style lang="postcss" module>
 @import "../../base/global.css";
-
 .wrap {
   padding: 9px 18px;
   background-image: linear-gradient(180deg, #ffecb0 0%, #ffaf00 100%);
@@ -234,14 +237,18 @@ export default {
 .title {
   margin-top: 2px;
   margin-bottom: 11px;
-  font-size: 13px;
-  line-height: 18px;
+  height: 18px;
+  width: 274px;
   color: #585858;
   & span {
     color: #f00;
   }
 }
-
+.titlecontext {
+  @mixin halffontsize;
+  font-size: 26px;
+  line-height: 36px;
+}
 .whitewrap {
   @mixin flexbox;
   flex-direction: column;
@@ -376,14 +383,11 @@ export default {
 }
 
 .counts {
-  position: absolute;
+  @mixin halffontsize;
   width: 100%;
   margin-top: 5.5px;
   font-size: 20px;
   line-height: 26px;
-  white-space: nowrap;
   color: #ff5b00;
-  transform: scale(0.5);
-  transform-origin: 0 0;
 }
 </style>
