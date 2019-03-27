@@ -37,7 +37,7 @@
         </div>
         <div :class="$style.right">
           <div
-            :class="$style.listend"
+            :class="[$style.listend,{[$style.red]: item.code ===0, [$style.green]: Number(item.change.slice(0, -2)) <0}]"
             w-16-19
             v-text="item.change"
           ></div>
@@ -58,77 +58,68 @@ export default {
     return {
       listDetails: [
         {
-          action: '签到奖励',
+          action: '积分换钱',
           time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
+          change: '-2000积分',
+          status: '审核通过',
+          code: 1
         },
         {
           action: '任务奖励',
           time: '2018-01-20 14:12:33',
           change: '+3000积分',
-          status: '审核未通过'
+          status: '审核未通过',
+          code: 0
         },
         {
           action: '签到奖励',
           time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
+          change: '+200积分',
+          status: '审核通过',
+          code: 1
+        },
+        {
+          action: '积分换钱',
+          time: '2018-01-20 14:12:33',
+          change: '-2000积分',
+          status: '审核通过',
+          code: 1
         },
         {
           action: '任务奖励',
           time: '2018-01-20 14:12:33',
           change: '+3000积分',
-          status: '审核未通过'
+          status: '审核未通过',
+          code: 0
         },
-                {
+        {
           action: '签到奖励',
           time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
+          change: '+200积分',
+          status: '审核通过',
+          code: 1
+        },
+        {
+          action: '积分换钱',
+          time: '2018-01-20 14:12:33',
+          change: '-2000积分',
+          status: '审核通过',
+          code: 1
         },
         {
           action: '任务奖励',
           time: '2018-01-20 14:12:33',
           change: '+3000积分',
-          status: '审核未通过'
-        },
-                {
-          action: '签到奖励',
-          time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
+          status: '审核未通过',
+          code: 0
         },
         {
-          action: '任务奖励',
-          time: '2018-01-20 14:12:33',
-          change: '+3000积分',
-          status: '审核未通过'
-        },
-                {
           action: '签到奖励',
           time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
+          change: '+200积分',
+          status: '审核通过',
+          code: 1
         },
-        {
-          action: '任务奖励',
-          time: '2018-01-20 14:12:33',
-          change: '+3000积分',
-          status: '审核未通过'
-        },        {
-          action: '签到奖励',
-          time: '2018-01-20 14:12:33',
-          change: '200积分',
-          status: '审核通过'
-        },
-        {
-          action: '任务奖励',
-          time: '2018-01-20 14:12:33',
-          change: '+3000积分',
-          status: '审核未通过'
-        },
-
       ]
     }
   }
@@ -138,6 +129,12 @@ export default {
 <style lang="postcss" module>
 @import "../../base/global.css";
 .wrap {
+}
+.red {
+  color: #e14123;
+}
+.green {
+  color: #1aba33;
 }
 .detailstitle {
   @mixin flexbox;
@@ -159,7 +156,7 @@ export default {
     align-items: center;
   }
 }
-.listwrap{
+.listwrap {
   padding-bottom: 90px;
 }
 .list {
@@ -171,7 +168,7 @@ export default {
   border-image: svg(1px-border param(--color #e6e6e6)) 1 stretch;
   color: #333;
 }
-.lastlist{
+.lastlist {
   border-bottom: none;
 }
 .listend {
@@ -195,7 +192,7 @@ export default {
 .question {
   color: #507daf;
 }
-.right{
+.right {
   @mixin flexbox;
   flex-direction: column;
   align-items: flex-end;

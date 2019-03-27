@@ -31,7 +31,7 @@
         <button
           w-12-16
           :class="$style.withdrawbtn"
-          @click="withdraw"
+          @click="withdrawCash"
         >提现</button>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default {
     changeMoney() {
       this.isShow = !this.isShow;
     },
-    withdraw() {
+    withdrawCash() {
       this.$router.push({ name: 'cash', query:{cash:this.currentGet}});
     },
     withdraw(arr){

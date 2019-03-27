@@ -10,7 +10,6 @@
           ref="svg"
         >
           <div :class="{[$style.svgactive]:item.active}">
-
           </div>
           <div
             :class="{[$style.icon]: true}"
@@ -247,7 +246,7 @@ export default {
   @mixin flexbox;
   flex-direction: column;
   background-color: #fff;
-  padding: 13px 31px;
+  padding: 13px 30px;
   border-radius: 26px;
 }
 

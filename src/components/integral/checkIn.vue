@@ -4,6 +4,7 @@
     @mousewheel.prevent
     @click="$emit('close')"
   >
+
     <div
       w-18-25
       c-fff
@@ -56,12 +57,19 @@ export default {
   & div {
     height: 75px;
     width: 75px;
-    @mixin bg "@/assets/jinbi0.png";
-    transform-style: preserve-3d;
-    animation: move_jinbi 4s  infinite;
+    /* @mixin bg "@/assets/jinbi9.png";
+    animation: move_jinbi 1s steps(8, start) infinite forwards; */
+    @mixin bg "@/assets/coin.png";
+    animation: rolls 2s steps(10, start) infinite forwards;
+    transform: translate3d(0, 0, 0);
   }
 }
-/* cubic-bezier(1, -0.18, 1, -0.17) */
+
+@keyframes rolls {
+  to {
+    background-position: 0 bottom;
+  }
+}
 .footer {
   & img {
     width: 10px;
@@ -82,25 +90,22 @@ export default {
   0 {
     @mixin bg "@/assets/jinbi0.png";
   }
-  12.4% {
-    transform: rotateY(12.5deg);
-  }
-  12.5% {
+  12.5 {
     @mixin bg "@/assets/jinbi1.png";
   }
-  25% {
+  1/4 {
     @mixin bg "@/assets/jinbi2.png";
   }
   37.5% {
     @mixin bg "@/assets/jinbi3.png";
   }
-  50% {
+  1/2 {
     @mixin bg "@/assets/jinbi4.png";
   }
-  62.5% {
+  67.5% {
     @mixin bg "@/assets/jinbi5.png";
   }
-  75% {
+  3/4 {
     @mixin bg "@/assets/jinbi7.png";
   }
   87.5% {
