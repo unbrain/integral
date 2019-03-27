@@ -28,16 +28,17 @@
       >
       积分
     </div>
-    <div w-30-44>
-      2500
-    </div>
+    <p w-30-44 v-text="integral"></p>
     <button
       :class="[$style.mybutton,$style.mainbtn]"
       @click="go"
     >
-      <div>兑换</div>
+      <p>兑换</p>
     </button>
-    <fin-action-description v-show="actionShow" @close="actionShow = false"></fin-action-description>
+    <fin-action-description
+      v-show="actionShow"
+      @close="actionShow = false"
+    ></fin-action-description>
   </div>
 </template>
 
@@ -49,7 +50,8 @@ export default {
   },
   data() {
     return {
-      actionShow: false
+      actionShow: false,
+      integral: 2500
     }
   },
   methods: {

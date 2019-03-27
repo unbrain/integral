@@ -56,7 +56,7 @@ export default {
     return {
       currentIntegral: 2560,
       currentGet: 34.5,
-      isShow: false
+      isShow: false,
     }
   },
   methods: {

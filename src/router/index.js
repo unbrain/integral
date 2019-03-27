@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import wallet from '@/views/wallet';
 import withdraw from '@/views/withdraw';
-import best from '@/views/best';
+import home from '@/views/home';
 import main from '@/views/main.vue';
 import awardRecord from '@/views/awardRecord.vue';
 import cash from '@/views/cash';
@@ -23,8 +23,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: best,
-      component: best
+      name: home,
+      component: home
     },
     {
       path: '/main',

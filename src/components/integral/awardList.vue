@@ -14,7 +14,7 @@
       >
         <div :class="[$style.listfirst, {[$style.listfirstlast]: index === awardDetails.length-1 && !item.show}]">
           <div>
-            <div :class="$style.titlewrap">
+            <div :class="[$style.titlewrap, {[$style.onlytitle]: !item.total}]">
               <div
                 w-16-22
                 v-text="item.title"
@@ -69,12 +69,9 @@
               :disabled=" item.total-item.all===0"
               @click="plus(index)"
             >
-              <div v-if="item.total < item.all">
-                去完成
-              </div>
+              <div v-if="item.total < item.all">去完成 </div>
               <div v-else-if="item.status === 3">去邀请</div>
-              <div v-else-if="item.total === item.all">已领取</div>
-
+              <div v-else>已领取</div>
             </button>
             <button
               :class="$style.getbutton"
@@ -96,7 +93,6 @@
           </div>
         </transition>
       </li>
-
     </ul>
   </div>
 </template>
@@ -217,6 +213,9 @@ export default {
   @mixin flexbox;
   margin-bottom: 5px;
 }
+.onlytitle {
+  margin-bottom: 0;
+}
 .titledetails {
   @mixin flexbox;
 }
@@ -224,6 +223,7 @@ export default {
   width: 16px;
   height: 16px;
   margin-left: 4px;
+  margin-right: 2px;
 }
 .barwrap {
   @mixin flexbox;

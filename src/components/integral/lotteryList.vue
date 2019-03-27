@@ -44,7 +44,12 @@
         </div>
       </li>
     </ul>
-    <div :class="[$style.footer]"></div>
+    <div :class="$style.footer">
+      <div
+        :class="$style.footercontext"
+        v-text="slogan"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -58,6 +63,7 @@ export default {
   },
   data() {
     return {
+      slogan: '连续签到7天即可转盘抽奖,每日所得任务积分记得领取,每日24:00会过期哦',
       checkInShow: false,
       turnTableShow: false,
       currentIntegral: '',
@@ -109,7 +115,6 @@ export default {
         this.checkInShow = true;
         this.lotteryDetails[index].value = '已领<div>' + this.lotteryDetails[index].value + '</div>'
         this.lotteryDetails[index].status = 1;
-        this.todayGet = true;
       }
     },
   },
@@ -192,10 +197,9 @@ export default {
   left: 20px;
   top: 50%;
 }
-.footer::after {
+.footercontext {
   position: absolute;
   display: block;
-  content: "连续签到7天即可转盘抽奖,每日所得任务积分记得领取,每日24:00会过期哦";
   white-space: nowrap;
   font-size: 20px;
   line-height: 28px;
