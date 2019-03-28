@@ -98,6 +98,7 @@ export default {
 
 <style lang="postcss" module>
 @import "../../base/global.css";
+
 .container {
   @mixin flexbox;
   @mixin fullsize;
@@ -164,10 +165,10 @@ export default {
     padding: 9px 0 10px 0;
     line-height: 20px;
     font-size: 14px;
-    color: #FB802D;
+    color: #fb802d;
   }
-  & .fine::after{
-    border-color: #FB802D;
+  & .fine::after {
+    border-color: #fb802d;
   }
 }
 .father {
@@ -177,6 +178,16 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  & ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* 滚动条滑块 */
+  & ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+  }
 }
 </style>
 
