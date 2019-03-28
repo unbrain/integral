@@ -32,12 +32,8 @@
         ></fin-message-strip>
       </div>
       <div>
-        <div
-          aspectratio
-          w-184-23
-          :class="$style.actiontimertimewrap"
-        >
-          <div aspectratio-content>
+        <div :class="$style.actiontimertimewrap">
+          <div>
             <div :class="$style.actiontimertime">
               活动倒计时
               <div :class="$style.actiontimertimechild">
@@ -239,9 +235,9 @@ input[type="reset"] {
 }
 
 .actiontimertimewrap {
-  /* background-image: linear-gradient(-66deg, #ffaf00 0%, #ff8200 100%);
-  border-radius: 23px; */
-  @mixin bg "@/assets/bg.png";
+  border-radius: 50px;
+  background-image: linear-gradient(-90deg, #F23805 0%, #F6681E 48%, #FF8D2D 100%);
+  padding: 4px 10px;
   /* background-size: 100%; */
   /* height: 23px; */
 }

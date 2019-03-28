@@ -26,7 +26,7 @@
                   v-html="item"
                 ></li>
               </ul>
-              <button
+              <div
                 :class="$style.more"
                 @click="moreRules"
                 v-show="!hidden"
@@ -36,7 +36,7 @@
                   src="@/assets/Combined Shape.png"
                   alt
                 >
-              </button>
+              </div>
             </div>
             <button
               :class="[$style.fine, $style.mybutton]"
