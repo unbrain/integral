@@ -69,8 +69,8 @@ export default {
     width: 75px;
     /* @mixin bg "@/assets/jinbi9.png";
     animation: move_jinbi 1s steps(8, start) infinite forwards; */
-    @mixin bg "@/assets/coin.png";
-    animation: rolls 2s steps(10, start) 1 forwards;
+    @mixin bg "@/assets/jinbi.png";
+    animation: rolls 2s steps(8, start) 1 reverse;
     transform: translate3d(0, 0, 0);
   }
 }
