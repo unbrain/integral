@@ -38,7 +38,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/cash/:cash',
+      path: '/cash',
       name: 'cash',
       component: cash
     }

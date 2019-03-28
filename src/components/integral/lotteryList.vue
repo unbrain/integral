@@ -32,7 +32,7 @@
             >
           </div>
           <div
-            :class="[$style.colorbar,{[$style.missbar]: item.status === 2}]"
+            :class="[$style.colorbar,{[$style.pinkbar]: item.status === 2,[$style.greybar]: item.status === 0}]"
             v-show="index !== 0"
           ></div>
         </div>
@@ -215,8 +215,12 @@ export default {
   right: 100%;
   transform: translateY(-50%);
 }
-.missbar {
+.pinkbar {
   background-image: none;
   background-color: #fff8e6;
+}
+.greybar {
+  background-image: none;
+  background-color: #F5F5F5;
 }
 </style>
