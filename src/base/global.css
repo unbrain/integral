@@ -252,7 +252,7 @@ ol {
     border: 1px solid #fff;
     transform: scale(0.5);
     transform-origin: -1px -1px;
-    border-radius: 7.467vw;
+    border-radius: 15vw;
   }
 }
 
@@ -268,7 +268,7 @@ ol {
     border: 2px solid #fff;
     transform: scale(0.3333);
     transform-origin: 0 0;
-    border-radius: 7.467vw;
+    border-radius: 22.5vw;
   }
 }
 

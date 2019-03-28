@@ -2,7 +2,7 @@
   <div
     :class="$style.wrap"
     @mousewheel.prevent
-    @click="$emit('close')"
+    @click="close"
   >
 
     <div
@@ -32,7 +32,17 @@
 
 <script>
 export default {
-  props: ['integral']
+  props: ['integral'],
+  methods:{
+    close(){
+      this.$emit('close');
+    }
+  },
+  mounted(){
+    setTimeout(() => {
+      this.close();
+    }, 2000);
+  }
 }
 </script>
 
@@ -60,7 +70,7 @@ export default {
     /* @mixin bg "@/assets/jinbi9.png";
     animation: move_jinbi 1s steps(8, start) infinite forwards; */
     @mixin bg "@/assets/coin.png";
-    animation: rolls 2s steps(10, start) infinite forwards;
+    animation: rolls 2s steps(10, start) 1 forwards;
     transform: translate3d(0, 0, 0);
   }
 }
