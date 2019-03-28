@@ -38,6 +38,7 @@
       </div>
       <button
         :class="[$style.toastbtn, {[$style.candraw]: status}]"
+        :disabled="!status"
         @click="withdraw"
       >
         兑换
@@ -86,7 +87,7 @@ export default {
     },
     withdraw() {
       if (this.status) {
-        this.$emit('withdraw', [this.canDraw, Number(this.canDraw)/this.rate]);
+        this.$emit('withdraw', [this.canDraw, Number(this.canDraw) / this.rate]);
         this.close();
         this.$toast('兑换成功');
       }
@@ -146,8 +147,10 @@ export default {
   width: 221px;
   height: 40px;
   border-radius: 50px;
-  background-color: #dadada;
   font-size: 17px;
+}
+.toastbtn[disabled] {
+  background-color: #dadada;
 }
 .candraw {
   background-image: linear-gradient(-45deg, #ffc74d 0%, #ff8800 100%);
